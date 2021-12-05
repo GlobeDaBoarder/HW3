@@ -31,3 +31,8 @@ void Data::printArr()
 	}
 	std::cout << std::endl;
 }
+
+void Data::quickSort()
+{
+	QuickSort::Sort(m_data, 0, m_data.size() - 1);
+}

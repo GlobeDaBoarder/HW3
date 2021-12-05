@@ -1,7 +1,7 @@
 #pragma once
-#include<vector>
 #include <iostream>
 #include <random>
+#include "QuickSort.h"
 
 class Data
 {
@@ -16,4 +16,5 @@ public:
 	Data(int size);
 
 	void printArr();
+	void quickSort();
 };
