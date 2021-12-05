@@ -1,4 +1,5 @@
 #include "Data.h"
+#include "Timer.h"
 
 
 int main()
@@ -16,9 +17,15 @@ int main()
 
 	Data dat4(10000);
 
-	//testing quicksort
+	//time measuring (in milliseconds)
+
+	Timer t1;
+	t1.start();
 
 	dat1.quickSort();
 
-	dat1.printArr();
+	t1.end();
+
+	std::cout << t1.getTime();
+
 }
