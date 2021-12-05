@@ -1,31 +1,34 @@
 #include "Data.h"
 #include "Timer.h"
+#include <fstream>
+#include <math.h>
 
 
 int main()
 {
-
-	//creating random dada sets of different size
-
-	Data dat1(10);
-	dat1.printArr();
-
-	Data dat2(100);
-	dat2.printArr();
-
-	Data dat3(1000);
-
-	Data dat4(10000);
-
+	//experiment #1 -- Quick Sort
 	//time measuring (in milliseconds)
 
-	Timer t1;
-	t1.start();
+	std::ofstream qs_res;
+	qs_res.open("./qs_res.csv");
 
-	dat1.quickSort();
+	//5 sizes of data sets 10, 100, 1 000, 10 000, 100 000
+	for (int i = 0; i < 5; ++i)
+	{
+		//20 tests per each size of data 
+		for (int j = 0; j < 20; ++j)
+		{
+			Data d(pow(10, (i + 1))); 
+			Timer t;
+			t.start();
+			d.quickSort();
+			t.end();
 
-	t1.end();
+			qs_res << t.getTime() << ';';
+		}
+		qs_res << '\n';
+	}
 
-	std::cout << t1.getTime();
+
 
 }
