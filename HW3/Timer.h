@@ -4,9 +4,9 @@
 class Timer
 {
 private:
-	std::chrono::steady_clock::time_point m_start;
-	std::chrono::steady_clock::time_point m_end;
-	std::chrono::duration<double, std::milli> m_time;
+	std::chrono::high_resolution_clock::time_point m_start;
+	std::chrono::high_resolution_clock::time_point m_end;
+	std::chrono::duration<double, std::micro> m_time;
 
 public:
 
