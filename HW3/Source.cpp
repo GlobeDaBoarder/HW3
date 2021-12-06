@@ -2,7 +2,6 @@
 #include "Timer.h"
 #include <fstream>
 #include <math.h>
-#include <filesystem>
 
 Timer MeasureQuickSort(Data& d)
 {
@@ -92,5 +91,7 @@ int main()
 	//hs_asc_res.close();
 
 	std::cout << "All done!" << std::endl;
-	std::cout << "check for .csv files in the curent directory";
+	std::cout << "check for .csv files in the curent directory, where you launched the executable file" << std::endl;
+
+	system("pause");
 }
