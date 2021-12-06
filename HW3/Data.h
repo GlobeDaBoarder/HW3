@@ -2,6 +2,7 @@
 #include <iostream>
 #include <random>
 #include "QuickSort.h"
+#include "HeapSort.h"
 
 class Data
 {
@@ -18,4 +19,5 @@ public:
 
 	void printArr();
 	void quickSort();
+	void heapSort();
 };

@@ -2,12 +2,23 @@
 #include "Timer.h"
 #include <fstream>
 #include <math.h>
+#include <filesystem>
 
 Timer MeasureQuickSort(Data& d)
 {
 	Timer t;
 	t.start();
 	d.quickSort();
+	t.end();
+
+	return t;
+}
+
+Timer MeasureHeapSort(Data& d)
+{
+	Timer t;
+	t.start();
+	d.heapSort();
 	t.end();
 
 	return t;
@@ -53,6 +64,8 @@ void RunTests(std::ofstream& res, Timer (*MeasureSortFunction)(Data& d), bool is
 
 int main()
 {
+	std::cout << "Please wait. This operation might take a few seconds..." << std::endl;
+
 	//experiment #1 -- Quick Sort, random data
 	//time measuring (in milliseconds)
 
@@ -65,4 +78,19 @@ int main()
 	std::ofstream qs_asc_res("./qs_asc_res.csv");
 	RunTests(qs_asc_res, MeasureQuickSort, false);
 	qs_asc_res.close();
+
+	//experiment #3 -- Heap sort with random 
+
+	std::ofstream hs_rand_res("./hs_rand_res.csv");
+	RunTests(hs_rand_res, MeasureHeapSort, true);
+	hs_rand_res.close();
+
+	//experiment #4 -- Heap sort with ascending
+
+	std::ofstream hs_asc_res("./hs_asc_res.csv");
+	RunTests(hs_asc_res, MeasureHeapSort, false);
+	//hs_asc_res.close();
+
+	std::cout << "All done!" << std::endl;
+	std::cout << "check for .csv files in the curent directory";
 }

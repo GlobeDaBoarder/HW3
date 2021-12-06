@@ -51,3 +51,8 @@ void Data::quickSort()
 {
 	QuickSort::Sort(m_data, 0, m_data.size() - 1);
 }
+
+void Data::heapSort()
+{
+	HeapSort::Sort(m_data);
+}
