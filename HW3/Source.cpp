@@ -66,7 +66,7 @@ int main()
 	std::cout << "Please wait. This operation might take a few seconds..." << std::endl;
 
 	//experiment #1 -- Quick Sort, random data
-	//time measuring (in milliseconds)
+	//time measuring (in microseconds)
 
 	std::ofstream qs_rand_res("./qs_rand_res.csv");
 	RunTests(qs_rand_res, MeasureQuickSort, true); //3rd parameter true is resonsible for making data random 
