@@ -11,9 +11,10 @@ private:
 
 private:
 	void setRandArr();
+	void setAscending();
 
 public:
-	Data(int size);
+	Data(int size, bool is_random);
 
 	void printArr();
 	void quickSort();

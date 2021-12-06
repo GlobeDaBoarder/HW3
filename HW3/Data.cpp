@@ -15,12 +15,27 @@ void Data::setRandArr()
 
 }
 
+void Data::setAscending()
+{
+	for (int i = 0; i < m_data.size(); ++i)
+	{
+		m_data[i] = i;
+	}
+}
+
 //public methods
 
-Data::Data(int size)
+Data::Data(int size, bool is_random)
 {
 	m_data.resize(size);
-	this->setRandArr();
+	if (is_random)
+	{
+		this->setRandArr();
+		return;
+	}
+		
+	this->setAscending();
+
 }
 
 void Data::printArr()

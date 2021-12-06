@@ -3,7 +3,7 @@
 #include <fstream>
 #include <math.h>
 
-Timer RunQuickSort(Data& d)
+Timer MeasureQuickSort(Data& d)
 {
 	Timer t;
 	t.start();
@@ -13,7 +13,7 @@ Timer RunQuickSort(Data& d)
 	return t;
 }
 
-void RunTests(std::ofstream& res, Timer (*f)(Data& d))
+void RunTests(std::ofstream& res, Timer (*MeasureSortFunction)(Data& d), bool isRandom)
 {
 	//5 sizes of data sets 10, 100, 1 000, 10 000, 100 000
 	for (int i = 0; i < 6; ++i)
@@ -41,9 +41,9 @@ void RunTests(std::ofstream& res, Timer (*f)(Data& d))
 				continue;
 			}
 
-			Data d(data_size);
-			Timer t = (*f)(d);
-			
+			Data d(data_size, isRandom);
+
+			Timer t = (*MeasureSortFunction)(d);
 
 			res << t.getTime() << ',';
 		}
@@ -53,12 +53,16 @@ void RunTests(std::ofstream& res, Timer (*f)(Data& d))
 
 int main()
 {
-	//experiment #1 -- Quick Sort
+	//experiment #1 -- Quick Sort, random data
 	//time measuring (in milliseconds)
 
-	std::ofstream qs_res("./qs_res.csv");
-	RunTests(qs_res, RunQuickSort);
-	qs_res.close();
+	std::ofstream qs_rand_res("./qs_rand_res.csv");
+	RunTests(qs_rand_res, MeasureQuickSort, true); //3rd parameter true is resonsible for making data random 
+	qs_rand_res.close();
 
+	//experiment #2 -- Quick Sort, ascending data
 
+	std::ofstream qs_asc_res("./qs_asc_res.csv");
+	RunTests(qs_asc_res, MeasureQuickSort, false);
+	qs_asc_res.close();
 }
