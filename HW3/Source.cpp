@@ -26,10 +26,10 @@ Timer MeasureHeapSort(Data& d)
 void RunTests(std::ofstream& res, Timer (*MeasureSortFunction)(Data& d), bool isRandom)
 {
 	//5 sizes of data sets 10, 100, 1 000, 10 000, 100 000
-	for (int i = 0; i < 6; ++i)
+	for (int i = 0; i < 21; ++i)
 	{
 		//20 tests per each size of data 
-		for (int j = 0; j < 21; ++j)
+		for (int j = 0; j < 11; ++j)
 		{
 			if (i == 0)
 			{
@@ -44,7 +44,7 @@ void RunTests(std::ofstream& res, Timer (*MeasureSortFunction)(Data& d), bool is
 				continue;
 			}
 
-			int data_size = pow(10, i);
+			int data_size = 1000 * i;
 			if (j == 0)
 			{
 				res << "data size " << data_size << ',';
